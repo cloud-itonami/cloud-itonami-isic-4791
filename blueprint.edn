@@ -1,0 +1,12 @@
+{:itonami.blueprint/id "cloud-itonami-isic-4791"
+ :itonami.blueprint/name "Retail Sale via Mail Order Houses or via Internet"
+ :itonami.blueprint/isic-rev5 "4791"
+ :itonami.blueprint/domain :commerce/retail
+ :itonami.blueprint/license "AGPL-3.0-or-later"
+ :itonami.blueprint/social-impact [:local-economy :consumer-protection :transparency]
+ :itonami.blueprint/governor :mail-order-retail-governor
+ :itonami.blueprint/robotics true
+ :itonami.blueprint/required-technologies [:robotics :identity :forms :dmn :bpmn :audit-ledger :retail]
+ :itonami.blueprint/optional-technologies []
+ :itonami.blueprint/status :public-oss
+ :itonami.blueprint/maturity :implemented}
