@@ -6,7 +6,7 @@
   page and no generator at all. This namespace drives the REAL actor stack
   (`mailorderops.operation` -> `mailorderops.governor` ->
   `mailorderops.store`) through a scenario adapted from this repo's own
-  `mailorderops.sim` demo driver (`clojure -M:run`, confirmed BEFORE
+  `mailorderops.sim` demo driver (`kbb -M:run`, confirmed BEFORE
   writing this file to produce a sensible ledger against the real seeded
   seller/vendor ids `seller-1`..`seller-4` / `vendor-1`..`vendor-2` --
   unlike `cloud-itonami-isic-851`'s `schoolops.sim`, this repo's own sim
@@ -18,7 +18,7 @@
   content, byte-identical across reruns against the same seed (verify
   by diffing two consecutive runs).
 
-  Usage: `clojure -M:dev:render-html [out-file]`
+  Usage: `kbb -M:dev:render-html [out-file]`
   (default `docs/samples/operator-console.html`)."
   (:require [jp-go-dds.skin]
             [kotoba.lang.text :as str]
@@ -164,7 +164,7 @@
      "<main>\n"
      "  <section class=\"card\">\n"
      "    <h2>Merchant accounts (sellers)</h2>\n"
-     "    <p class=\"muted\">Demo snapshot — build-time-generated from <code>mailorderops.store</code> via <code>mailorderops.render-html</code> (<code>clojure -M:dev:render-html</code>). Primary gate is seller/merchant-account verification (registered + verified + payment-processor-linked), not a physical storefront.</p>\n"
+     "    <p class=\"muted\">Demo snapshot — build-time-generated from <code>mailorderops.store</code> via <code>mailorderops.render-html</code> (<code>kbb -M:dev:render-html</code>). Primary gate is seller/merchant-account verification (registered + verified + payment-processor-linked), not a physical storefront.</p>\n"
      "    <table>\n"
      "      <thead><tr><th>Seller</th><th>Name</th><th>Registered</th><th>Verified</th><th>Payment-processor linked</th><th>Last op status</th></tr></thead>\n"
      "      <tbody>\n"
