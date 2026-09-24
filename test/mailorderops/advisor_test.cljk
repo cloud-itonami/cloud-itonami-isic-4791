@@ -1,6 +1,6 @@
 (ns mailorderops.advisor-test
   "Unit tests of `mailorderops.advisor` proposal generation."
-  (:require [clojure.test :refer [deftest is testing]]
+  (:require [kotoba.test :refer [deftest is testing]]
             [mailorderops.advisor :as adv]
             [mailorderops.store :as store]))
 

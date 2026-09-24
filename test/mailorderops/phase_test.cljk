@@ -1,6 +1,6 @@
 (ns mailorderops.phase-test
   "Unit tests of `mailorderops.phase` rollout logic."
-  (:require [clojure.test :refer [deftest is testing]]
+  (:require [kotoba.test :refer [deftest is testing]]
             [mailorderops.phase :as phase]))
 
 (deftest phase-0-read-only
