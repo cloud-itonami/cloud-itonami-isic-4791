@@ -1,0 +1,33 @@
+;; What this vertical's robot physically does, declared for
+;; kotoba.robotics.process (kotoba-lang/robotics). `kbb -M:dev:physics` runs it.
+;;
+;; README "Robotics premise": a robot may perform the physical work of a
+;; mail-order / e-commerce fulfilment centre (ISIC 4791) -- warehouse
+;; picking, packing, palletizing. Here: a palletizing arm stacking shipping
+;; cartons onto the outbound pallet, and a goods-to-person drive unit
+;; carrying an inventory pod (a tall shelf) to the pick station.
+;;
+;; Every number without a cited source is marked `estimate` in its :basis.
+;; Replacing an estimate with a sourced value is this bot's growth work.
+{:physics/schema "itonami.physical-ai.spec.v1"
+ :repo "cloud-itonami/cloud-itonami-isic-4791"
+ :cases
+ [{:id :palletize-shipping-carton
+   :kind :manipulator
+   :procedure "palletizing arm lifts a shipping carton off the outbound conveyor and places it on the pallet's top layer"
+   :params {:l1-m 0.80 :l2-m 0.70 :m1-kg 12.0 :m2-kg 8.0
+            :from [0.90 0.20] :to [0.50 1.10] :duration-s 2.0 :steps 400}
+   :sweep {:param :payload-kg :values [2.0 5.0 10.0 15.0 20.0 25.0]}
+   :quantity :peak-tau1-nm
+   :limit {:max 500.0 :basis "estimate: continuous shoulder torque of a ~20 kg-class palletizing arm"}
+   :boundary {:lo 0.5 :hi 80.0}}
+  {:id :inventory-pod-drive-unit-stop
+   :kind :transport
+   :procedure "drive unit lifts a 450 kg inventory pod and carries it 30 m to the pick station, braking at the station queue"
+   :params {:mass-kg 145.0 :payload-kg 450.0 :distance-m 30.0 :v-max-mps 1.5 :a-max-mps2 0.5
+            :drive-force-n 1200.0 :crr 0.01 :cog-height-m 0.20 :payload-cog-height-m 1.20
+            :support-half-length-m 0.38 :max-time-s 600.0}
+   :sweep {:param :brake-decel-mps2 :values [0.5 1.0 1.5 2.0 3.0 4.0]}
+   :quantity :min-tipover-margin
+   :limit {:min 0.25 :basis "estimate: keep a 25 % stability reserve for a tall pod carried on a drive unit's footprint"}
+   :boundary {:lo 0.3 :hi 6.0}}]}
